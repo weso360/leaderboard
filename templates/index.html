@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaderboard</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Score</th>
+        </tr>
+        {% for i, user in enumerate(leaderboard) %}
+        <tr>
+            <td>{{ i+1 }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.score }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div style="text-align:center;">
+        <span id="page-number">1</span> of 1
+    </div>
+    <script>
+        const tableRows = document.querySelectorAll("table tr");
+      
+        const pageNumberSpan = document.querySelector("#page-number");
+        const rowsPerPage = 1000;
+        let currentPage = 1;
+
+        prevBtn.addEventListener("click", () => {
+            if (currentPage > 1) {
+                currentPage--;
+                updatePage();
+            }
+        });
+
+        nextBtn.addEventListener("click", () => {
+            if (currentPage < total_pages) {
+                currentPage++;
+                updatePage();
+            }
+        });
+
+        function updatePage() {
+            pageNumberSpan.textContent = currentPage;
+            for (let i = 0; i < tableRows.length; i++) {
+                if (i >= rowsPerPage * (currentPage - 1) && i < rowsPerPage * currentPage) {
+                    tableRows[i].style.display = "table-row";
+                } else {
+                    tableRows[i].style.display = "none";
+                }
+            }
+        }
+
+        updatePage();
+    </script>
+</body>
+</html>
