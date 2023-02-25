@@ -40,7 +40,7 @@ def inject_enumerate():
 if __name__ == '__main__':
     #app.debug = True #refreshed the webpage if anything changes
     #app.run(host = '0.0.0.0', port = 8080) #allows me to create a http file to run and test code locally
-    app.run(debug=false, host = '0.0.0.0')
+    app.run(debug=False, host = '0.0.0.0')
 
 
 
