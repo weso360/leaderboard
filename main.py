@@ -38,9 +38,9 @@ def inject_enumerate():
     return dict(enumerate=enumerate) #allowed me to use the enumerate built in function
 
 if __name__ == '__main__':
-    app.debug = True #refreshed the webpage if anything changes
+    #app.debug = True #refreshed the webpage if anything changes
     #app.run(host = '0.0.0.0', port = 8080) #allows me to create a http file to run and test code locally
-    app.run(host = '0.0.0.0', port = 8080)
+    app.run(debug=false, host = '0.0.0.0')
 
 
 
